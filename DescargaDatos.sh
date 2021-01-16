@@ -4,5 +4,14 @@ wget http://datosabiertos.salud.gob.mx/gobmx/salud/datos_abiertos/datos_abiertos
 
 unzip datos_abiertos_covid19.zip 
 
+cat  *.csv > ~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_19.csv
+
+rm  *.zip 
+rm  *.csv 
+
+source ~/Documentos/API-CEDRUS/Cedrus/bin/activate
+
+
+
 
 
