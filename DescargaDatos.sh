@@ -11,6 +11,7 @@ rm  *.csv
 
 source ~/Documentos/API-CEDRUS/Cedrus/bin/activate
 
+python3 ~/Documentos/API-CEDRUS/Proyecto/Datos/CruceDatosCovidMarcoEstadistico.py
 
 
 
