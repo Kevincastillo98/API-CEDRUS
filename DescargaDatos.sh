@@ -13,12 +13,15 @@ rm  *.zip
 rm  *.csv 
 
 echo "====Activacion de entorno virtual===="
-source .virtualenvs/Mining/bin/activate
+source ~/.virtualenvs/Mining/bin/activate
 
 
 echo "====Se ejecuta el script Cruce Datos entre datos covid y georeferencia===="
 python3   ~/Documentos/API-CEDRUS/Proyecto/Datos/CruceDatosCovidMarcoEstadistico.py
 
+echo "====Se crea esquema de base de datos===="
+python3  ~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/generadorExpresionSQL.py > ~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/CargaDatos.sql
 
-
+echo "====Se ejecuta el script de creacion de esquema en mysql===="
+mysql   <  ~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/CargaDatos.sql
 
