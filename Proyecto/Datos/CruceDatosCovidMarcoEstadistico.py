@@ -5,7 +5,7 @@ import pandas as pd
 import unicodedata
 
 
-datos_covid =  pd.read_csv('~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_19.csv',encoding='latin1')
+datos_covid =  pd.read_csv('~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_19.csv',encoding='latin1',error_bad_lines=False)
 datos_marco_geoestadistico = pd.read_csv('~/Documentos/API-CEDRUS/Proyecto/Datos/marco_referencial.csv',index_col=0)
 
 datos_covid_geopoint = datos_covid.merge(datos_marco_geoestadistico,'left',on=['ENTIDAD_RES','MUNICIPIO_RES'])
