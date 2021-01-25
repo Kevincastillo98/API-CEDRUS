@@ -2,7 +2,8 @@ import pandas as pd
 import  os 
 import sys
 
-comando = "head -1  ~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo.csv > generador.csv"
+comando = "head -1  ~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo.csv > ~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/generador.csv"
+
 os.system(comando)
 
 df = pd.read_csv('generador.csv')
