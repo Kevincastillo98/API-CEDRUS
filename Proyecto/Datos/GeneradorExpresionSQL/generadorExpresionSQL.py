@@ -6,7 +6,7 @@ comando = "head -1  ~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo.csv >
 
 os.system(comando)
 
-df = pd.read_csv('generador.csv')
+df = pd.read_csv('~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/generador.csv')
 lista = list(df.columns)
 concatenador = [i + ' VARCHAR(255)' for i in lista]
 salida = tuple(concatenador)
