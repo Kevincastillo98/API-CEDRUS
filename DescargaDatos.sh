@@ -13,14 +13,14 @@ rm  *.zip
 rm  *.csv 
 
 echo "====Activacion de entorno virtual===="
-source ~/.virtualenvs/Mining/bin/activate
+source  ~/Documentos/API-CEDRUS/Mining/bin/activate
 
 
 echo "====Se ejecuta el script Cruce Datos entre datos covid y georeferencia===="
 python3   ~/Documentos/API-CEDRUS/Proyecto/Datos/CruceDatosCovidMarcoEstadistico.py
 
 echo "====Se mueve el documeto datos covid a la direccion /var/lib/mysql"
-sudo cp ~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_19.csv  /var/lib/mysql
+sudo cp ~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo.csv  /var/lib/mysql
 
 echo "====Se crea esquema de base de datos===="
 python3  ~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/generadorExpresionSQL.py > ~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/CargaDatos.sql
