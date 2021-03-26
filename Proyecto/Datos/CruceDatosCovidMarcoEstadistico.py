@@ -15,4 +15,6 @@ datos_covid_geopoint = datos_covid.merge(datos_marco_geoestadistico,'left',on=['
 datos_covid_geopoint["PAIS_NACIONALIDAD"] = datos_covid_geopoint['PAIS_NACIONALIDAD'].str.normalize('NFKD').str.encode('ascii', errors='ignore').str.decode('utf-8')
 
 
-datos = datos_covid_geopoint.to_csv("~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo.csv",index=False,single_file = True)
+#datos = datos_covid_geopoint.to_csv("~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo.csv",index=False,single_file = True)
+
+datos = datos_covid_geopoint.to_csv("~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo",index=False,single_file = False)

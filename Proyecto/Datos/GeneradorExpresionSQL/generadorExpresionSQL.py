@@ -2,13 +2,13 @@ import pandas as pd
 import  os 
 import sys
 
-comando = "head -1  ~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo.csv > ~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/generador.csv"
+comando = "head -1  ~/Documentos/API-CEDRUS/Proyecto/Datos/datos_covid_geo/00.part > ~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/generador.csv"
 
 os.system(comando)
 
 df = pd.read_csv('~/Documentos/API-CEDRUS/Proyecto/Datos/GeneradorExpresionSQL/generador.csv')
 lista = list(df.columns)
-concatenador = [i + ' VARCHAR(255)' for i in lista]
+concatenador = [i + ' VARCHAR(100)' for i in lista]
 salida = tuple(concatenador)
 
 definicion_base  = "USE ETL;"
