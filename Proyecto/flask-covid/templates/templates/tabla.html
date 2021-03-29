@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CEDRUS</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 align="center">Datos COVID</h1>  
+            
+            <h4> Descargar datos por municipio</h4>
+           <form action="{{ url_for('busqueda') }}" method="POST" class=busqueda> 
+	            <div class="row">
+	                <div class="col-md-6">
+	                    <label>Selecciona un Estado</label>          
+		                    <select name="entidad" data-live-search="true" id="entidad" class="form-control" title="Selecciona una entidad"> 
+		                    {% for i in entidades %}
+		                    <option value="{{i.Nombre_Entidad}}">{{i.Nombre_Entidad}}</option>
+		                    {% endfor %}
+		                    </select>
+
+	                </div>
+	      
+                    <div class="col-md-6">
+	                    <label>Selecciona un Municipio</label>
+	                    <select name="municipio" data-live-search="true" id="municipio" class="form-control" title="Selecciona un Municipio"> </select>
+	                </div>
+	            </div>
+            	<input class="btn" type="submit" value="Descargar csv" style="background-color:green;color: white">
+		    </form>  
+			
+            <h4> Descargar datos por Estado</h4>
+           <form action="{{ url_for('user') }}" method="POST" class=user> 
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Selecciona un Estado</label>          
+                            <select name="entidad_estado" data-live-search="true" id="entidad_estado" class="form-control" title="Selecciona una entidad"> 
+                            {% for i in entidades %}
+                            <option value="{{i.Nombre_Entidad}}">{{i.Nombre_Entidad}}</option>
+                            {% endfor %}
+                            </select>
+
+                    </div>
+                </div>
+                <input class="btn" type="submit" value="Descargar csv" style="background-color:blue;color: white">
+            </form>  
+
+
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+        
+
+		<script>
+            $(document).ready(function () {
+                $("#entidad").selectpicker();
+   
+                $("#municipio").selectpicker();
+   
+                function load_data(type, category_id) {
+                    $.ajax({
+                        url: "/entidad",
+                        method: "POST",
+                        data: { type: type, category_id: category_id },
+                        dataType: "json",
+                        success: function (data) { //alert(category_id)
+                            var html = "";
+                            for (var count = 0; count < data.length; count++) {
+                                html += '<option value="' + data[count].name + '">' + data[count].name + "</option>";
+                            }
+                            if (type == "entidadData") {
+                                $("#entidad").html(html);
+                                $("#entidad").selectpicker("refresh");
+                            } else {
+                                $("#municipio").html(html);
+                                $("#municipio").selectpicker("refresh");
+                            }
+                        },
+                    });
+                }
+   
+                $(document).on("change", "#entidad", function () {
+                    var category_id = $("#entidad").val();
+                    load_data("municipioData", category_id);
+                });
+            });
+        </script>
+
+
+
+
+    </body>
+</html>

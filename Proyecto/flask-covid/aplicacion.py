@@ -49,7 +49,7 @@ def entidad():
 @app.route("/descarga", methods=['POST'])
 def user():
     cur = mysql.connection.cursor()
-    estado =  request.form.get('entidad')
+    estado =  request.form.get('entidad_estado')
     print(estado)
     cur.execute("""SELECT *  FROM datos_covid_geo WHERE NOMBRE_ENTIDAD_RES = %s """, [estado])
     result = cur.fetchall()
